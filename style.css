@@ -1,0 +1,77 @@
+body {
+  font-family: 'Roboto Condensed';
+  margin: 2cm;
+}
+
+h1 {
+  margin-top: 2cm;
+  margin-bottom: 2cm;
+}
+
+h2 {
+  font-size: 1em;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.2cm;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+
+th {
+  text-align: left;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.description {
+  font-style: italic;
+}
+
+.value {
+  text-align: right;
+  font-family: 'Roboto';
+}
+
+#issuer {
+  text-align: right;
+}
+
+#details {
+  text-align: right;
+}
+
+#info {
+  display: flex;
+  justify-content: space-between;
+}
+
+#info td {
+  vertical-align: text-top;
+}
+
+#charges {
+  margin-top: 2cm;
+  margin-bottom: 2cm;
+  width: 100%;
+}
+
+#charges tr.summary {
+  border-top: 2px solid black;
+}

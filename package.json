@@ -1,0 +1,16 @@
+{
+  "name": "invoice",
+  "version": "1.0.0",
+  "description": "generate invoices for me",
+  "bin": "index.js",
+  "keywords": [],
+  "author": "harry lachenmayer <harrylachenmayer@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^6.1.1",
+    "date-fns": "^1.29.0",
+    "hyperscript": "^2.0.2",
+    "node-yaml": "^3.1.1",
+    "opn": "^5.2.0"
+  }
+}

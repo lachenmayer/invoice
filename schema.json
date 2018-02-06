@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "Issuer": {
+      "type": "object",
+      "properties": {
+        "Name": { "type": "string" },
+        "Address": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["Name", "Address"]
+    },
+    "Currency": { "type": "string" },
+    "Payment details": {
+      "type": "object",
+      "properties": {
+        "Name": { "type": "string" },
+        "Bank": { "type": "string" },
+        "Branch": { "type": "string" },
+        "Sort Code": { "type": "string" },
+        "Account No.": {
+          "anyOf": [{ "type": "string" }, { "type": "number" }]
+        }
+      },
+      "required": ["Name", "Bank", "Branch", "Sort Code", "Account No."],
+      "additionalProperties": false
+    },
+    "Details": {
+      "type": "object",
+      "properties": {
+        "Invoice number": { "type": "string" },
+        "Date issued": { "type": "string" },
+        "Date due": { "type": "string" }
+      },
+      "required": ["Invoice number", "Date issued", "Date due"]
+    },
+    "Issued to": {
+      "type": "object",
+      "properties": {
+        "Name": { "type": "string" },
+        "Address": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["Name", "Address"]
+    },
+    "Charges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Description": { "type": "string" },
+          "Unit price": { "type": "number" },
+          "Units": { "type": "number" }
+        },
+        "required": ["Description"]
+      }
+    }
+  },
+  "required": [
+    "Issuer",
+    "Currency",
+    "Payment details",
+    "Details",
+    "Issued to",
+    "Charges"
+  ]
+}
