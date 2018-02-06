@@ -4,3 +4,7 @@ print preview, where I can then save it as PDF.
 
 This is probably not useful to anyone else.
 You can try it out with the example YAML file in this repo if you want.
+
+To install:
+
+$ npm install -g https://github.com/lachenmayer/invoice
