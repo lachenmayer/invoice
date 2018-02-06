@@ -1,0 +1,28 @@
+Issuer:
+  Name: Example Person
+  Address:
+    - 123 Example Road
+    - Example City
+Currency: $
+Payment details:
+  Name: Example Person
+  Bank: Example Bank
+  Branch: Example Branch
+  Sort Code: 12-34-56
+  Account No.: 123456789
+Details:
+  Invoice number: ABC123
+  Date issued: 01.01.2018
+  Date due: 01.01.2118
+Issued to:
+  Name: Someone Else
+  Address:
+    - 321 Example Road
+    - Example City
+Charges:
+  - Description: Did loads of work
+    Unit price: 999
+    Units: 2
+  - Description: Did even more work
+    Unit price: 999
+    Units: 5
