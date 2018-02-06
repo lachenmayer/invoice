@@ -6,6 +6,7 @@ const { createServer } = require('http')
 const h = require('hyperscript')
 const yaml = require('node-yaml')
 const open = require('opn')
+const path = require('path')
 
 const schema = require('./schema')
 
@@ -23,7 +24,7 @@ function main() {
   }
 
   const validate = new Ajv().compile(schema)
-  const pieces = args.map(path => yaml.readSync(path))
+  const pieces = args.map(filePath => yaml.readSync(path.resolve(filePath)))
   const invoice = Object.assign(...pieces)
   const valid = validate(invoice)
 
@@ -99,7 +100,7 @@ function charges(invoice) {
 }
 
 function page(title, ...contents) {
-  const style = fs.readFileSync('./style.css', 'utf8')
+  const style = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8')
 
   return h(
     'html',
