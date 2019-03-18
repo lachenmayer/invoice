@@ -404,10 +404,6 @@ function Number({
 //
 
 
-function money(number) {
-  return number ? number.toFixed(2) : '';
-}
-
 const baseline = 14;
 const tableMargin = baseline * 0.5;
 const itemizedMargin = baseline * 0.5;
@@ -440,6 +436,31 @@ function text(fontFamily, size = 1) {
     fontSize: size * baseline
   };
 }
+
+function money(number) {
+  return number ? number.toFixed(2) : '';
+}
+},{}],"i53S":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = registerFonts;
+
+var _renderer = require("@react-pdf/renderer");
+
+function registerFonts(fontMap) {
+  for (const [family, path] of Object.entries(fontMap)) {
+    _renderer.Font.register(path, {
+      family
+    });
+  }
+
+  _renderer.Font.registerHyphenationCallback(word => {
+    return [word];
+  });
+}
 },{}],"DxDr":[function(require,module,exports) {
 "use strict";
 
@@ -450,28 +471,22 @@ exports.default = renderInvoice;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _renderer = _interopRequireWildcard(require("@react-pdf/renderer"));
+var _renderer = _interopRequireDefault(require("@react-pdf/renderer"));
 
 var _tempy = _interopRequireDefault(require("tempy"));
 
 var _Invoice = _interopRequireDefault(require("./Invoice"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _registerFonts = _interopRequireDefault(require("./registerFonts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 async function renderInvoice(invoice) {
-  const fonts = {
+  (0, _registerFonts.default)({
     'Roboto Regular': __dirname + '/../fonts/Roboto/Roboto-Regular.ttf',
     'Roboto Condensed Regular': __dirname + '/../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf',
     'Roboto Condensed Bold': __dirname + '/../fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf'
-  };
-
-  for (const [family, path] of Object.entries(fonts)) {
-    _renderer.Font.register(path, {
-      family
-    });
-  }
+  });
 
   const outPath = _tempy.default.file({
     extension: 'pdf'
@@ -482,7 +497,7 @@ async function renderInvoice(invoice) {
   }), outPath);
   return outPath;
 }
-},{"./Invoice":"crut"}],"dtX/":[function(require,module,exports) {
+},{"./Invoice":"crut","./registerFonts":"i53S"}],"dtX/":[function(require,module,exports) {
 module.exports = {
   "$schema": "http://json-schema.org/schema#",
   "type": "object",

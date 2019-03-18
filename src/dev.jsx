@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { PDFViewer, Font } from '@react-pdf/renderer'
+import { PDFViewer } from '@react-pdf/renderer'
 
 import Invoice from './Invoice'
+import registerFonts from './registerFonts'
 
 const exampleInvoice = {
   Issuer: {
@@ -50,14 +51,15 @@ function App() {
   )
 }
 
-const fonts = {
-  'Roboto Regular': require('../fonts/Roboto/Roboto-Regular.ttf'),
-  'Roboto Condensed Regular': require('../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf'),
-  'Roboto Condensed Bold': require('../fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf'),
-}
+const absolute = path => `${location.origin}/${path}`
 
-for (const [family, path] of Object.entries(fonts)) {
-  Font.register(`${location.origin}/${path}`, { family })
-}
-
+registerFonts({
+  'Roboto Regular': absolute(require('../fonts/Roboto/Roboto-Regular.ttf')),
+  'Roboto Condensed Regular': absolute(
+    require('../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf')
+  ),
+  'Roboto Condensed Bold': absolute(
+    require('../fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf')
+  ),
+})
 ReactDOM.render(<App />, document.querySelector('main'))

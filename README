@@ -1,6 +1,6 @@
-Generates invoices for me by reading the required details from YAML files,
-generating HTML & CSS, serving the resulting page & opening the browser's
-print preview, where I can then save it as PDF.
+Generates invoices for me by reading the required details from YAML files.
+
+PDF files are generated using react-pdf.
 
 This is probably not useful to anyone else.
 You can try it out with the example YAML file in this repo if you want.
