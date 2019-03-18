@@ -2,15 +2,25 @@
   "name": "invoice",
   "version": "1.0.0",
   "description": "generate invoices for me",
-  "bin": "index.js",
+  "bin": "cli.js",
   "keywords": [],
   "author": "harry lachenmayer <harrylachenmayer@gmail.com>",
   "license": "ISC",
+  "scripts": {
+    "dev": "parcel src/dev.html --open --out-dir dev/",
+    "build": "parcel build --target node --no-minify --no-source-maps --out-dir node/ src/cli.js"
+  },
   "dependencies": {
-    "ajv": "^6.1.1",
-    "date-fns": "^1.29.0",
-    "hyperscript": "^2.0.2",
+    "@react-pdf/renderer": "^1.4.1",
+    "ajv": "^6.10.0",
+    "date-fns": "^1.30.1",
     "node-yaml": "^3.1.1",
-    "opn": "^5.2.0"
+    "opn": "^5.5.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "tempy": "^0.2.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.2"
   }
 }
